@@ -24,31 +24,25 @@
                       <table class="table table-bordered table-md" id="table-1">
                       <thead>
                         <tr>
-                          <th>ID</th>
-                          <th>Service Slug</th>
-                          <th>Service Name</th>
-                          <th>Short Description</th>
-                          <th>Long Description</th>
-                          <th>Action</th>
+                          <th class="text-center">ID</th>
+                          <th class="text-center" width="15%">Service Name</th>
+                          <th class="text-center">Short Description</th>
+                          <th class="text-center">Long Description</th>
+                          <th class="text-center">Access Key</th>
+                          <th class="text-center" width="15%">Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                        {{ range .data }}
                         <tr>
-                          <td>1</td>
-                          <td>license-plate-recognition</td>
-                          <td>License Plate Recognition</td>
-                          <td>Recognize vehicle licese plate number from vehicle passing by that captured by camera</td>
-                          <td>Nodeflux License Plate Recognition (LPR) is a Vision Artificial Intelligence Analytics Software which provides recognition of face plates for all types of vehicles. Nodeflux LPR is using a Deep Learning algorithm developed to adapt real conditions in Indonesia, like various kinds of plate, and any wide range of environmental conditions.</td>
-                          <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a><a href="#" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a></td>
+                          <td>{{ .ID }}</td>
+                          <td>{{ .Name }}</td>
+                          <td>{{ .ShortDescription }}</td>
+                          <td>{{ .LongDescription }}</td>
+                          <td>{{ .AccessKey }}</td>
+                          <td class="text-center"><a href="#" class="btn btn-xs btn-icon btn-primary"><i class="fa fa-pencil-alt"></i></a> <a href="#" class="btn btn-xs btn-icon btn-danger"><i class="fa fa-trash-alt"></i></a></td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>face-match-enrollment</td>
-                          <td>Face Match with Enrollment</td>
-                          <td>Recognize two faces from two photos. One from input and one from enrolled database defined by enrollment ID</td>
-                          <td>Nodeflux Face Match w/ID is a Vision Artiﬁcial Intelligence Analytics Software which provides accurate matching and recognition. Using a Deep Learning Algorithm to enhance the accuracy of facial inferencing, Nodeflux Face Match w/ID automatically detects facial features from a photo and matches it with a pre-enrolled photo in the database.</td>
-                          <td><a href="#" class="btn btn-primary"><i class="fa fa-pencil-alt"></i></a><a href="#" class="btn btn-danger"><i class="fa fa-trash-alt"></i></a></td>
-                        </tr>
+                        {{ end }}
                       </tbody>
                       </table>
                     </div>
@@ -75,25 +69,6 @@
 
     <!-- Page Specific JS File -->
     <script>
-    $('.daterange-cus').daterangepicker({
-  locale: {format: 'YYYY-MM-DD'},
-  drops: 'down',
-  opens: 'right'
-});
-$('.daterange-btn').daterangepicker({
-  ranges: {
-    'Today'       : [moment(), moment()],
-    'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-    'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-    'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-    'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-  },
-  startDate: moment().subtract(29, 'days'),
-  endDate  : moment()
-}, function (start, end) {
-  $('.daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-});
 $("#table-1").dataTable();
 </script>
   </body>

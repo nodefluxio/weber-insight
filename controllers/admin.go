@@ -16,12 +16,12 @@ type GoogleToken struct {
 	token string `json:"google-token" binding:"required"`
 }
 
-func (ctrl *Controller) Login(c *gin.Context) {
-	googleToken := c.PostForm("google-token")
+func (ctrl *Controller) Login(ctx *gin.Context) {
+	googleToken := ctx.PostForm("google-token")
 	resp, err := http.Get("https://oauth2.googleapis.com/tokeninfo?id_token=" + googleToken)
 	if err != nil {
 		fmt.Println("Get: " + err.Error() + "\n")
-		c.Redirect(http.StatusTemporaryRedirect, "/")
+		ctx.Redirect(http.StatusTemporaryRedirect, "/")
 		return
 	}
 	defer resp.Body.Close()
@@ -29,7 +29,7 @@ func (ctrl *Controller) Login(c *gin.Context) {
 	response, err2 := ioutil.ReadAll(resp.Body)
 	if err2 != nil {
 		fmt.Println("ReadAll: " + err.Error() + "\n")
-		c.Redirect(http.StatusTemporaryRedirect, "/")
+		ctx.Redirect(http.StatusTemporaryRedirect, "/")
 		return
 	}
 
@@ -41,36 +41,36 @@ func (ctrl *Controller) Login(c *gin.Context) {
 	var requiredEmail = "@nodeflux.io"
 
 	if strings.Contains(email, requiredEmail) {
-		session := sessions.Default(c)
+		session := sessions.Default(ctx)
 		session.Set("logged_in", true)
 		session.Set("name", name)
 		session.Set("picture", picture)
 		session.Save()
 	} else {
-		c.AbortWithStatus(http.StatusUnauthorized)
+		ctx.AbortWithStatus(http.StatusUnauthorized)
 	}
 }
 
-func (ctrl *Controller) Index(c *gin.Context) {
-	if ctrl.CheckLoggedIn(c) {
-		c.Redirect(http.StatusTemporaryRedirect, "/dashboard")
+func (ctrl *Controller) Index(ctx *gin.Context) {
+	if ctrl.CheckLoggedIn(ctx) {
+		ctx.Redirect(http.StatusTemporaryRedirect, "/dashboard")
 	} else {
-		c.Redirect(http.StatusTemporaryRedirect, "/login")
+		ctx.Redirect(http.StatusTemporaryRedirect, "/login")
 	}
 }
 
-func (ctrl *Controller) CheckLoggedIn(c *gin.Context) bool {
-	session := sessions.Default(c)
+func (ctrl *Controller) CheckLoggedIn(ctx *gin.Context) bool {
+	session := sessions.Default(ctx)
 	if session.Get("logged_in") == true {
 		return true
 	}
 	return false
 }
 
-func (ctrl *Controller) Logout(c *gin.Context) {
-	session := sessions.Default(c)
+func (ctrl *Controller) Logout(ctx *gin.Context) {
+	session := sessions.Default(ctx)
 	session.Clear()
 	session.Options(sessions.Options{MaxAge: -1})
 	session.Save()
-	c.Redirect(http.StatusTemporaryRedirect, "/login")
+	ctx.Redirect(http.StatusTemporaryRedirect, "/login")
 }

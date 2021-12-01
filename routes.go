@@ -30,11 +30,11 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	r.Use(loginMiddleware(ctrl))
 
-	// base := r.Group("")
-	// services := base.Group("/services")
-	// {
-	// 	services.GET("", ctrl.GetServices)
-	// }
+	base := r.Group("")
+	services := base.Group("/services")
+	{
+		services.GET("", ctrl.GetServices)
+	}
 
 	r.GET("/", ctrl.Index)
 
@@ -56,15 +56,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"name":      session.Get("name"),
 			"title":     "Weber Insight - Dashboard",
 			"dashboard": true,
-		})
-	})
-
-	r.GET("/services", func(c *gin.Context) {
-		session := sessions.Default(c)
-		c.HTML(http.StatusOK, "services.tmpl", gin.H{
-			"name":           session.Get("name"),
-			"title":          "Weber Insight - Services",
-			"manageservices": true,
 		})
 	})
 
