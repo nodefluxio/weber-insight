@@ -1,0 +1,97 @@
+<body>
+    <div id="app">
+      <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+          <form class="form-inline mr-auto" style="">
+            <ul class="navbar-nav mr-3">
+              <li>
+                <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"
+                  ><i class="fas fa-bars"></i
+                ></a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  data-toggle="search"
+                  class="nav-link nav-link-lg d-sm-none"
+                  ><i class="fas fa-search"></i
+                ></a>
+              </li>
+            </ul>
+          </form>
+          <ul class="navbar-nav navbar-right">
+            <li class="dropdown">
+              <a
+                href="#"
+                data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user"
+              >
+                <img
+                  alt="image"
+                  src="../assets/img/avatar/avatar-1.png"
+                  class="rounded-circle mr-1"
+                />
+                <div class="d-sm-none d-lg-inline-block">
+                  Hi, {{ .name }}
+                </div></a
+              >
+              <div class="dropdown-menu dropdown-menu-right">
+                <div class="dropdown-title">Logged in</div>
+                <a href="/logout" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <div class="main-sidebar">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="dashboard"
+                ><img
+                  src="../assets/img/nodeflux_logo.png"
+                  alt="logo"
+                  style="max-width: 60%; height: auto"
+                  class="mb-5"
+              /></a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="dashboard">Nodeflux</a>
+            </div>
+            <ul class="sidebar-menu">
+              <li class="menu-header">Menu</li>
+              <li class="{{if .dashboard}}active{{end}}">
+                <a class="nav-link" href="dashboard"
+                  ><i class="fas fa-fire"></i> <span>Dashboard</span></a
+                >
+              </li>
+              <li class="{{if .userlookup}}active{{end}}">
+                <a class="nav-link" href="user-activities"
+                  ><i class="fas fa-user"></i> <span>User Activities</span></a
+                >
+              </li>
+              <li class="{{if .userfeedback}}active{{end}}">
+                <a class="nav-link" href="user-feedback"
+                  ><i class="fas fa-comments"></i> <span>User Feedback</span></a
+                >
+              </li>
+              <li class="{{if .manageservices}}active{{end}}">
+                <a class="nav-link" href="services"
+                  ><i class="fas fa-tasks"></i> <span>Manage Services</span></a
+                >
+              </li>
+              <li class="{{if .emailnotification}}active{{end}}">
+                <a class="nav-link" href="notification"
+                  ><i class="fas fa-envelope"></i> <span>Email Notification</span></a
+                >
+              </li>
+              <li class="{{if .exportdata}}active{{end}}">
+                <a class="nav-link" href="export-data"
+                  ><i class="fas fa-th-large"></i>
+                  <span>Export Data</span></a
+                >
+              </li>
+            </ul>
+          </aside>
+        </div>

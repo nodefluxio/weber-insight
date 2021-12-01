@@ -1,0 +1,276 @@
+{{ template "header.tmpl" . }}
+<!-- CSS Libraries -->
+  <link rel="stylesheet" href="../node_modules/jqvmap/dist/jqvmap.min.css">
+  <link rel="stylesheet" href="../node_modules/summernote/dist/summernote-bs4.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css">
+  <link rel="stylesheet" href="../node_modules/weathericons/css/weather-icons.min.css">
+  <link rel="stylesheet" href="../node_modules/weathericons/css/weather-icons-wind.min.css">
+</head>
+{{ template "menu.tmpl" . }}
+  <!-- Main Content -->
+<div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+          </div>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-primary">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Users</h4>
+                  </div>
+                  <div class="card-body">
+                    1,201
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-success">
+                  <i class="fas fa-users-cog"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Users with Information</h4>
+                  </div>
+                  <div class="card-body">
+                    500
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-info">
+                  <i class="far fa-file"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Services Used</h4>
+                  </div>
+                  <div class="card-body">
+                    601
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+              <div class="card card-statistic-1">
+                <div class="card-icon bg-warning">
+                  <i class="far fa-file"></i>
+                </div>
+                <div class="card-wrap">
+                  <div class="card-header">
+                    <h4>Total Services Feedback</h4>
+                  </div>
+                  <div class="card-body">
+                    102
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Total Users Statistics</h4>
+                  <div class="card-header-action">
+                    <div class="btn-group">
+                      <a href="#" class="btn btn-primary">Week</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <canvas id="myChart" height="182"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-12 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Top 5 Services by Usage</h4>
+                </div>
+                <div class="card-body">
+                  <ul class="list-unstyled list-unstyled-border">
+                    <li class="media">
+                      <img class="mr-3 rounded" width="50" src="../assets/img/nodeflux-squarelogo.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">1500 times</div>
+                        <div class="media-title">License Plate Recognition</div>
+                        <span class="text-small text-muted"><i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i></span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded" width="50" src="../assets/img/nodeflux-squarelogo.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">1200 times</div>
+                        <div class="media-title">Optical Character Recognition KTP</div>
+                        <span class="text-small text-muted"><i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i></span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded" width="50" src="../assets/img/nodeflux-squarelogo.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">900 times</div>
+                        <div class="media-title">Electronic Know Your Customer</div>
+                        <span class="text-small text-muted"><i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i></span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded" width="50" src="../assets/img/nodeflux-squarelogo.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">500 times</div>
+                        <div class="media-title">Face Match with Enrollment</div>
+                        <span class="text-small text-muted"><i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i></span>
+                      </div>
+                    </li>
+                    <li class="media">
+                      <img class="mr-3 rounded" width="50" src="../assets/img/nodeflux-squarelogo.png" alt="avatar">
+                      <div class="media-body">
+                        <div class="float-right">300 times</div>
+                        <div class="media-title">Face Liveness</div>
+                        <span class="text-small text-muted"><i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i>
+                            <i class="fas fa-star" style="color: #FFA426"></i></span>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Popular Platform</h4>
+                </div>
+                <div class="card-body">
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">2,100</div>
+                    <div class="font-weight-bold mb-1">Android (Phone)</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">1,880</div>
+                    <div class="font-weight-bold mb-1">Windows (Desktop)</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="67%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">1,521</div>
+                    <div class="font-weight-bold mb-1">iOS (Phone)</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="58%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">884</div>
+                    <div class="font-weight-bold mb-1">Ubuntu (Desktop)</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="36%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">473</div>
+                    <div class="font-weight-bold mb-1">Mac OS (Desktop)</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="28%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="text-small float-right font-weight-bold text-muted">418</div>
+                    <div class="font-weight-bold mb-1">Others</div>
+                    <div class="progress" data-height="3">
+                      <div class="progress-bar" role="progressbar" data-width="20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Popular Browser</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col text-center">
+                      <div class="browser browser-chrome"></div>
+                      <div class="mt-2 font-weight-bold">Chrome</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 48%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-firefox"></div>
+                      <div class="mt-2 font-weight-bold">Firefox</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 26%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-safari"></div>
+                      <div class="mt-2 font-weight-bold">Safari</div>
+                      <div class="text-muted text-small"><span class="text-danger"><i class="fas fa-caret-down"></i></span> 14%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-opera"></div>
+                      <div class="mt-2 font-weight-bold">Opera</div>
+                      <div class="text-muted text-small">7%</div>
+                    </div>
+                    <div class="col text-center">
+                      <div class="browser browser-internet-explorer"></div>
+                      <div class="mt-2 font-weight-bold">IE</div>
+                      <div class="text-muted text-small"><span class="text-primary"><i class="fas fa-caret-up"></i></span> 5%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        </div>
+{{ template "footer.tmpl" . }}
+<!-- JS Libraies -->
+  <script src="../node_modules/jquery-sparkline/jquery.sparkline.min.js"></script>
+  <script src="../node_modules/chart.js/dist/Chart.min.js"></script>
+  <script src="../node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+  <script src="../node_modules/summernote/dist/summernote-bs4.js"></script>
+  <script src="../node_modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
+  <script src="../node_modules/simpleweather/jquery.simpleWeather.min.js"></script>
+  <script src="../node_modules/jqvmap/dist/jquery.vmap.min.js"></script>
+  <script src="../node_modules/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/index-0.js"></script>
+  </body>
+</html>

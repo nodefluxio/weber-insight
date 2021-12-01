@@ -1,0 +1,38 @@
+{{ template "header.tmpl" . }}
+</head>
+{{ template "menu.tmpl" . }}
+  <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>Email Notification</h1>
+          </div>
+
+          <div class="section-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card">
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Enable notification when there is new feedback from users</label>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                  </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+        </section>
+      </div>
+{{ template "footer.tmpl" . }}
+  </body>
+</html>
