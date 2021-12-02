@@ -40,7 +40,7 @@
                           <td>{{ .ShortDescription }}</td>
                           <td>{{ .LongDescription }}</td>
                           <td>{{ .AccessKey }}</td>
-                          <td class="text-center"><a href="#" class="btn btn-xs btn-icon btn-primary"><i class="fa fa-pencil-alt"></i></a> <a href="#" class="btn btn-xs btn-icon btn-danger"><i class="fa fa-trash-alt"></i></a></td>
+                          <td class="text-center"><a href="#" class="btn btn-xs btn-icon btn-primary"><i class="fa fa-pencil-alt"></i></a> <a href="#" class="btn btn-xs btn-icon btn-danger" onclick="deleteService({{ .ID }})"><i class="fa fa-trash-alt"></i></a></td>
                         </tr>
                         {{ end }}
                       </tbody>
@@ -70,6 +70,15 @@
     <!-- Page Specific JS File -->
     <script>
 $("#table-1").dataTable();
+function deleteService(id) {
+  $.get(
+    "{{ .base_url }}" + "/services/delete/" + id,
+    function (data, status) {
+      console.log("Data: " + data + "\nStatus: " + status);
+    }
+  );
+  window.location.reload();
+}
 </script>
   </body>
 </html>

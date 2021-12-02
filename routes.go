@@ -34,6 +34,7 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 	services := base.Group("/services")
 	{
 		services.GET("", ctrl.GetServices)
+		services.GET("/delete/:id", ctrl.DeleteService)
 	}
 
 	r.GET("/", ctrl.Index)

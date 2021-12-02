@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
+	"os"
 	"weber-insight/models"
 
 	"github.com/gin-contrib/sessions"
@@ -17,11 +19,26 @@ func (ctrl *Controller) GetServices(ctx *gin.Context) {
 	}
 
 	session := sessions.Default(ctx)
+	baseUrl := os.Getenv("BASE_URL")
 	ctx.HTML(http.StatusOK, "services.tmpl", gin.H{
-		"name":            session.Get("name"),
-		"title":           "Weber Insight - Manage Services",
-		"managerservices": true,
-		"data":            services,
+		"name":           session.Get("name"),
+		"base_url":       baseUrl,
+		"title":          "Weber Insight - Manage Services",
+		"manageservices": true,
+		"data":           services,
 	})
 
+}
+
+func (ctrl *Controller) DeleteService(ctx *gin.Context) {
+	var service models.Service
+	id := ctx.Param("id")
+	fmt.Println(id)
+	ctrl.Model.DeleteService(&service, id)
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"ok":      true,
+		"message": "Service has been deleted successfully",
+	})
+	return
 }
