@@ -42,3 +42,16 @@ func (ctrl *Controller) DeleteService(ctx *gin.Context) {
 	})
 	return
 }
+
+func (ctrl *Controller) CreateService(ctx *gin.Context) {
+	session := sessions.Default(ctx)
+	baseUrl := os.Getenv("BASE_URL")
+
+	ctx.HTML(http.StatusOK, "create-service.tmpl", gin.H{
+		"name":           session.Get("name"),
+		"base_url":       baseUrl,
+		"title":          "Weber Insight - Create Service",
+		"manageservices": true,
+	})
+	return
+}
