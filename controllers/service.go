@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 	"weber-insight/models"
 
 	"github.com/gin-contrib/sessions"
@@ -43,7 +44,7 @@ func (ctrl *Controller) DeleteService(ctx *gin.Context) {
 	return
 }
 
-func (ctrl *Controller) CreateService(ctx *gin.Context) {
+func (ctrl *Controller) CreateServiceView(ctx *gin.Context) {
 	session := sessions.Default(ctx)
 	baseUrl := os.Getenv("BASE_URL")
 
@@ -53,5 +54,27 @@ func (ctrl *Controller) CreateService(ctx *gin.Context) {
 		"title":          "Weber Insight - Create Service",
 		"manageservices": true,
 	})
+	return
+}
+
+func (ctrl *Controller) CreateService(ctx *gin.Context) {
+	service := models.Service{
+		Name:               ctx.PostForm("name"),
+		Type:               ctx.PostForm("type"),
+		Slug:               ctx.PostForm("slug"),
+		Thumbnail:          ctx.PostForm("thumbnail"),
+		AccessKey:          ctx.PostForm("access_key"),
+		Token:              ctx.PostForm("token"),
+		Timestamp:          ctx.PostForm("timestamp"),
+		ShortDescription:   ctx.PostForm("short_description"),
+		LongDescription:    ctx.PostForm("long_description"),
+		SpecialInstruction: ctx.PostForm("special_instruction"),
+		CreatedAt:          time.Now(),
+		UpdatedAt:          time.Now(),
+	}
+
+	ctrl.Model.CreateService(&service)
+
+	ctrl.GetServices(ctx)
 	return
 }

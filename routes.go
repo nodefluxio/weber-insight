@@ -37,7 +37,8 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 		services.GET("/delete/:id", ctrl.DeleteService)
 	}
 
-	r.GET("/create-service", ctrl.CreateService)
+	r.GET("/create-service", ctrl.CreateServiceView)
+	r.POST("/create-service", ctrl.CreateService)
 	r.GET("/", ctrl.Index)
 
 	r.GET("/error", func(c *gin.Context) {
