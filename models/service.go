@@ -5,17 +5,17 @@ import (
 )
 
 type Service struct {
-	ID                 uint `gorm:"primaryKey; autoIncrement" json:"id"`
-	Name               string
-	Type               string
-	Slug               string `gorm:"uniqueIndex"`
-	Thumbnail          string
-	AccessKey          string
-	Token              string
-	Timestamp          string
-	ShortDescription   string
-	LongDescription    string
-	SpecialInstruction string
+	ID                 uint `gorm:"primaryKey; autoIncrement" json:"id" form:"id"`
+	Name               string `form:"name"`
+	Type               string `form:"type"`
+	Slug               string `gorm:"uniqueIndex" form:"slug"`
+	Thumbnail          string `form:"thumbnail"`
+	AccessKey          string `form:"access_key"`
+	Token              string `form:"token"`
+	Timestamp          string `form:"timestamp"`
+	ShortDescription   string `form:"short_description"`
+	LongDescription    string `form:"long_description"`
+	SpecialInstruction string `form:"special_instruction"`
 	CreatedAt          time.Time
 	UpdatedAt          time.Time
 }

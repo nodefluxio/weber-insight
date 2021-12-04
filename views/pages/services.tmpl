@@ -41,7 +41,7 @@
                           <td>{{ .ShortDescription }}</td>
                           <td>{{ .LongDescription }}</td>
                           <td>{{ .AccessKey }}</td>
-                          <td class="text-center"><a href="#" class="btn btn-xs btn-icon btn-primary"><i class="fa fa-pencil-alt"></i></a> <a href="#" class="btn btn-xs btn-icon btn-danger" onclick="deleteService({{ .ID }})"><i class="fa fa-trash-alt"></i></a></td>
+                          <td class="text-center"><a href="update-service/{{ .ID }}" class="btn btn-xs btn-icon btn-primary"><i class="fa fa-pencil-alt"></i></a> <a href="#" class="btn btn-xs btn-icon btn-danger" onclick="deleteService({{ .ID }})"><i class="fa fa-trash-alt"></i></a></td>
                         </tr>
                         {{ end }}
                       </tbody>

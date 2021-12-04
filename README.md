@@ -12,7 +12,7 @@ Weber Dashboard Management and Insight
 
 ### How to run
 - Clone/download this repository
-- Open views and run ```yarn install```
+- Open views folder and run ```yarn install```
 - Open the root of this repository and run ```go run .```
 
 ## Run with Docker

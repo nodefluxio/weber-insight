@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 	"time"
@@ -34,13 +33,40 @@ func (ctrl *Controller) GetServices(ctx *gin.Context) {
 func (ctrl *Controller) DeleteService(ctx *gin.Context) {
 	var service models.Service
 	id := ctx.Param("id")
-	fmt.Println(id)
 	ctrl.Model.DeleteService(&service, id)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"ok":      true,
 		"message": "Service has been deleted successfully",
 	})
+	return
+}
+
+func (ctrl *Controller) UpdateServiceView(ctx *gin.Context) {
+	session := sessions.Default(ctx)
+	baseUrl := os.Getenv("BASE_URL")
+	
+	var service models.Service
+	id := ctx.Param("id")
+	ctrl.Model.GetService(&service, id)
+
+	ctx.HTML(http.StatusOK, "create-service.tmpl", gin.H{
+		"name":           session.Get("name"),
+		"base_url":       baseUrl,
+		"title":          "Weber Insight - Update Service",
+		"manageservices": true,
+		"data": service,
+	})
+}
+
+func (ctrl *Controller) UpdateService(ctx *gin.Context) {
+	var service models.Service
+	ctx.ShouldBind(&service)
+	ctrl.Model.UpdateService(&service)
+
+
+	ctrl.GetServices(ctx)
+
 	return
 }
 

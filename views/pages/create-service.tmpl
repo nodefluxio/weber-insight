@@ -12,50 +12,51 @@
                     <div class="col-12">
                         <div class="card">
                         <div class="card-body">
-                            <form method="post">
+                            <form method="post" {{ if .data }} action="/update-service" {{ end }}>
+                            {{ if .data.ID }} <input type="text" id="id" name="id" value="{{ .data.ID }}" hidden> {{ end }}
                                 <div class="form-group">
                                   <label>Name</label>
-                                  <input type="text" id="name" name="name" class="form-control" required>
+                                  <input type="text" id="name" name="name" class="form-control" {{ if .data.Name }} value="{{ .data.Name }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Type</label>
                                   <select class="form-control" id="type" name="type" required>
-                                    <option value="solution">Solution</option>
-                                    <option value="analytic">Analytics</option>
-                                    <option value="innovation">New Innovation</option>
+                                    <option value="solution" {{ if .data }} {{ if eq .data.Type "solution" }} selected {{ end }} {{ end }}>Solution</option>
+                                    <option value="analytic" {{ if .data }} {{ if eq .data.Type "analytic" }} selected {{ end }} {{ end }}>Analytics</option>
+                                    <option value="innovation" {{ if .data }} {{ if eq .data.Type "innovation" }} selected {{ end }} {{ end }}>New Innovation</option>
                                   </select>
                                 </div>
                                 <div class="form-group">
                                   <label>Slug</label>
-                                  <input type="text" class="form-control" id="slug" name="slug" required>
+                                  <input type="text" class="form-control" id="slug" name="slug" {{ if .data.Slug }} value="{{ .data.Slug }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Thumbnail Filename</label>
-                                  <input type="text" class="form-control" id="thumbnail" name="thumbnail" required>
+                                  <input type="text" class="form-control" id="thumbnail" name="thumbnail" {{ if .data.Thumbnail }} value="{{ .data.Thumbnail }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Access Key</label>
-                                  <input type="text" class="form-control" id="access_key" name="access_key" required>
+                                  <input type="text" class="form-control" id="access_key" name="access_key" {{ if .data.AccessKey }} value="{{ .data.AccessKey }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Token</label>
-                                  <input type="text" class="form-control" id="token" name="token" required>
+                                  <input type="text" class="form-control" id="token" name="token" {{ if .data.Token }} value="{{ .data.Token }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Timestamp</label>
-                                  <input type="text" class="form-control" id="timestamp" name="timestamp" required>
+                                  <input type="text" class="form-control" id="timestamp" name="timestamp" {{ if .data.Timestamp }} value="{{ .data.Timestamp }}" {{ end }} required>
                                 </div>
                                 <div class="form-group">
                                   <label>Short Description</label>
-                                  <textarea class="form-control" rows="3" id="short_description" name="short_description" required></textarea>
+                                  <textarea class="form-control" rows="3" id="short_description" name="short_description" required>{{ if .data.ShortDescription }} {{ .data.ShortDescription }} {{ end }}</textarea>
                                 </div>
                                 <div class="form-group">
                                   <label>Long Description</label>
-                                  <textarea class="form-control" rows="3" id="long_description" name="long_description" required></textarea>
+                                  <textarea class="form-control" rows="3" id="long_description" name="long_description" required>{{ if .data.LongDescription }} {{ .data.LongDescription }} {{ end }}</textarea>
                                 </div>
                                 <div class="form-group">
                                   <label>Special Instruction</label>
-                                  <input type="text" class="form-control" id="special_instruction" name="special_instruction" required>
+                                  <input type="text" class="form-control" id="special_instruction" name="special_instruction" {{ if .data.SpecialInstruction }} value="{{ .data.SpecialInstruction }}" {{ end }} required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
