@@ -30,30 +30,30 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	r.Use(loginMiddleware(ctrl))
 
-	base := r.Group("")
-	services := base.Group("/services")
-	{
-		services.GET("", ctrl.GetServices)
-		services.GET("/delete/:id", ctrl.DeleteService)
-	}
+	// Authentication
+	r.POST("/login", ctrl.Login)
+	r.GET("/logout", ctrl.Logout)
+
+	// Services
+	r.GET("/services", ctrl.GetServices)
+	r.GET("/delete-service/:id", ctrl.DeleteService)
 	r.GET("/update-service/:id", ctrl.UpdateServiceView)
 	r.POST("/update-service", ctrl.UpdateService)
 	r.GET("/create-service", ctrl.CreateServiceView)
 	r.POST("/create-service", ctrl.CreateService)
-	r.GET("/", ctrl.Index)
 
+	// Others
+	r.GET("/", ctrl.Index)
 	r.GET("/error", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "error.tmpl", gin.H{
 			"title": "Weber Insight - Error",
 		})
 	})
-
 	r.GET("/login", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "login.html", gin.H{
 			"title": "Weber Insight - Login",
 		})
 	})
-
 	r.GET("/dashboard", func(c *gin.Context) {
 		session := sessions.Default(c)
 		c.HTML(http.StatusOK, "dashboard.tmpl", gin.H{
@@ -62,7 +62,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"dashboard": true,
 		})
 	})
-
 	r.GET("/notification", func(c *gin.Context) {
 		session := sessions.Default(c)
 		c.HTML(http.StatusOK, "notification.tmpl", gin.H{
@@ -71,7 +70,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"emailnotification": true,
 		})
 	})
-
 	r.GET("/export-data", func(c *gin.Context) {
 		session := sessions.Default(c)
 		c.HTML(http.StatusOK, "export.tmpl", gin.H{
@@ -80,7 +78,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"exportdata": true,
 		})
 	})
-
 	r.GET("/user-activities", func(c *gin.Context) {
 		session := sessions.Default(c)
 		c.HTML(http.StatusOK, "user-activities.tmpl", gin.H{
@@ -89,7 +86,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"userlookup": true,
 		})
 	})
-
 	r.GET("/user-feedback", func(c *gin.Context) {
 		session := sessions.Default(c)
 		c.HTML(http.StatusOK, "user-feedback.tmpl", gin.H{
@@ -98,10 +94,5 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"userfeedback": true,
 		})
 	})
-
-	r.POST("/login", ctrl.Login)
-
-	r.GET("/logout", ctrl.Logout)
-
 	return r
 }

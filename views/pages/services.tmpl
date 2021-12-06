@@ -72,13 +72,17 @@
     <script>
 $("#table-1").dataTable();
 function deleteService(id) {
-  $.get(
-    "{{ .base_url }}" + "/services/delete/" + id,
-    function (data, status) {
-      console.log("Data: " + data + "\nStatus: " + status);
-    }
-  );
-  window.location.reload();
+  if(confirm("Are you sure to delete this item?")){
+    $.get(
+      "{{ .base_url }}" + "/delete-service/" + id,
+      function (data, status) {
+        console.log("Data: " + data + "\nStatus: " + status);
+        window.location.reload();
+      }
+    );
+  } else {
+    return false
+  }
 }
 </script>
   </body>
