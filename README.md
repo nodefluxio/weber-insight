@@ -21,8 +21,6 @@ Weber Dashboard Management and Insight
 
 ## Run with Docker
 
-Coming soon
-
 - Clone/download this repository
 - Copy .env.example as .env and edit your credentials
 - Run `docker-compose up --build`
