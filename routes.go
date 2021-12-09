@@ -42,6 +42,10 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 	r.GET("/create-service", ctrl.CreateServiceView)
 	r.POST("/create-service", ctrl.CreateService)
 
+	// User List
+	r.GET("/user-list", ctrl.GetVisitors)
+	r.GET("/aml-pep-user-list", ctrl.GetAMLPEPVisitors)
+
 	// Others
 	r.GET("/", ctrl.Index)
 	r.GET("/error", func(c *gin.Context) {

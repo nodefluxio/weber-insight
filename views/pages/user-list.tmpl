@@ -1,0 +1,91 @@
+{{ template "header.tmpl" . }}
+<!-- CSS Libraries -->
+  <link rel="stylesheet" href="../node_modules/bootstrap-daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+  <link rel="stylesheet" href="../node_modules/select2/dist/css/select2.min.css">
+  <link rel="stylesheet" href="../node_modules/selectric/public/selectric.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css">
+  <link rel="stylesheet" href="../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  <link rel="stylesheet" href="../node_modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css">
+</head>
+{{ template "menu.tmpl" . }}
+  <div class="main-content">
+        <section class="section">
+          <div class="section-header">
+            <h1>User List</h1>
+          </div>
+
+          <div class="section-body">
+          <div class="card">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-bordered table-md" id="table-1">
+                      <thead>
+                        <tr>
+                          <th class="text-center">Time</th>
+                          <th class="text-center">Email</th>
+                          <th class="text-center">Full Name</th>
+                          <th class="text-center">Company</th>
+                          <th class="text-center">Job Title</th>
+                          <th class="text-center">Industry</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {{ range .data }}
+                        <tr>
+                          <td>{{ .CreatedAt }}</td>
+                          <td>{{ .Email }}</td>
+                          <td>{{ .FullName }}</td>
+                          <td>{{ .Company }}</td>
+                          <td>{{ .JobTitle }}</td>
+                          <td>{{ .Industry }}</td>
+                        </tr>
+                        {{ end }}
+                      </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </section>
+      </div>
+{{ template "footer.tmpl" . }}
+<!-- JS Libraies -->
+  <script src="../node_modules/cleave.js/dist/cleave.min.js"></script>
+  <script src="../node_modules/cleave.js/dist/addons/cleave-phone.us.js"></script>
+  <script src="../node_modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+  <script src="../node_modules/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <script src="../node_modules/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+  <script src="../node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+  <script src="../node_modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+  <script src="../node_modules/select2/dist/js/select2.full.min.js"></script>
+  <script src="../node_modules/selectric/public/jquery.selectric.min.js"></script>
+  <script src="../node_modules/datatables/media/js/jquery.dataTables.min.js"></script>
+  <script src="../node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="../node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js"></script>
+
+    <!-- Page Specific JS File -->
+    <script>
+var table = $("#table-1").dataTable({
+    "order": [[ 0, "desc" ]]
+});
+
+function deleteService(id) {
+  if(confirm("Are you sure to delete this item?")){
+    $.get(
+      "{{ .base_url }}" + "/delete-service/" + id,
+      function (data, status) {
+        console.log("Data: " + data + "\nStatus: " + status);
+        window.location.reload();
+      }
+    );
+  } else {
+    return false
+  }
+}
+</script>
+  </body>
+</html>

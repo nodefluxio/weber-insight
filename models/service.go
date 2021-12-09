@@ -5,10 +5,10 @@ import (
 )
 
 type Service struct {
-	ID                 uint `gorm:"primaryKey; autoIncrement" json:"id" form:"id"`
+	ID                 uint   `gorm:"primaryKey; autoIncrement" json:"id" form:"id"`
 	Name               string `form:"name"`
 	Type               string `form:"type"`
-	Slug               string `gorm:"uniqueIndex" form:"slug"`
+	Slug               string `form:"slug"`
 	Thumbnail          string `form:"thumbnail"`
 	AccessKey          string `form:"access_key"`
 	Token              string `form:"token"`
@@ -38,6 +38,14 @@ func (m *Model) GetServices(Service *[]Service) (err error) {
 
 func (m *Model) GetService(Service *Service, id string) (err error) {
 	err = m.DBConn.Where("id = ?", id).First(Service).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *Model) GetServiceBySlug(Service *Service, slug string) (err error) {
+	err = m.DBConn.Where("slug = ?", slug).First(Service).Error
 	if err != nil {
 		return err
 	}

@@ -61,9 +61,19 @@
             </div>
             <ul class="sidebar-menu">
               <li class="menu-header">Menu</li>
-              <li class="{{if .userlist}}active{{end}}">
-                <a class="nav-link" href="user-list"
-                  ><i class="fas fa-user"></i> <span>User List</span></a
+              <li class="{{if .dashboard}}active{{end}}">
+                <a class="nav-link" href="dashboard"
+                  ><i class="fas fa-fire"></i> <span>Dashboard</span></a
+                >
+              </li>
+              <li class="{{if .userlookup}}active{{end}}">
+                <a class="nav-link" href="user-activities"
+                  ><i class="fas fa-user"></i> <span>User Activities</span></a
+                >
+              </li>
+              <li class="{{if .userfeedback}}active{{end}}">
+                <a class="nav-link" href="user-feedback"
+                  ><i class="fas fa-comments"></i> <span>User Feedback</span></a
                 >
               </li>
               <li class="{{if .manageservices}}active{{end}}">
@@ -71,9 +81,15 @@
                   ><i class="fas fa-tasks"></i> <span>Manage Services</span></a
                 >
               </li>
-              <li class="{{if .amlpepuserlist}}active{{end}}">
-                <a class="nav-link" href="aml-pep-user-list"
-                  ><i class="fas fa-user-tie"></i> <span>AML / PEP User List</span></a
+              <li class="{{if .emailnotification}}active{{end}}">
+                <a class="nav-link" href="notification"
+                  ><i class="fas fa-envelope"></i> <span>Email Notification</span></a
+                >
+              </li>
+              <li class="{{if .exportdata}}active{{end}}">
+                <a class="nav-link" href="export-data"
+                  ><i class="fas fa-th-large"></i>
+                  <span>Export Data</span></a
                 >
               </li>
             </ul>
