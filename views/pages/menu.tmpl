@@ -62,22 +62,22 @@
             <ul class="sidebar-menu">
               <li class="menu-header">Menu</li>
               <li class="{{if .userlist}}active{{end}}">
-                <a class="nav-link" href="user-list"
+                <a class="nav-link" href="{{ .base_url }}/user-list"
                   ><i class="fas fa-user"></i> <span>User List</span></a
                 >
               </li>
               <li class="{{if .userfeedback}}active{{end}}">
-                <a class="nav-link" href="user-feedback"
+                <a class="nav-link" href="{{ .base_url }}/user-feedback"
                   ><i class="fas fa-comments"></i> <span>User Feedback</span></a
                 >
               </li>
               <li class="{{if .manageservices}}active{{end}}">
-                <a class="nav-link" href="services"
+                <a class="nav-link" href="{{ .base_url }}/services"
                   ><i class="fas fa-tasks"></i> <span>Manage Services</span></a
                 >
               </li>
               <li class="{{if .amlpepuserlist}}active{{end}}">
-                <a class="nav-link" href="aml-pep-user-list"
+                <a class="nav-link" href="{{ .base_url }}/aml-pep-user-list"
                   ><i class="fas fa-user-tie"></i> <span>AML / PEP User List</span></a
                 >
               </li>

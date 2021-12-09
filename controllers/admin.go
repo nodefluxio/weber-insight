@@ -53,7 +53,7 @@ func (ctrl *Controller) Login(ctx *gin.Context) {
 
 func (ctrl *Controller) Index(ctx *gin.Context) {
 	if ctrl.CheckLoggedIn(ctx) {
-		ctx.Redirect(http.StatusTemporaryRedirect, "/dashboard")
+		ctx.Redirect(http.StatusTemporaryRedirect, "/user-list")
 	} else {
 		ctx.Redirect(http.StatusTemporaryRedirect, "/login")
 	}
