@@ -17,6 +17,8 @@ func (ctrl *Controller) GetVisitors(ctx *gin.Context) {
 		return
 	}
 
+	ctrl.Model.GetAllFeedbackToView()
+
 	session := sessions.Default(ctx)
 	baseUrl := os.Getenv("BASE_URL")
 	ctx.HTML(http.StatusOK, "user-list.tmpl", gin.H{
