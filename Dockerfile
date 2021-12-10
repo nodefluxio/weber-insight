@@ -14,13 +14,12 @@ WORKDIR /go/src/app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-COPY --from=build-views /src/app/views/node_modules ./views
+COPY --from=build-views /src/app/views/node_modules ./views/node_modules
 RUN go install
 
 FROM alpine:3.14 AS runtime
 WORKDIR /app
 COPY --from=build-golang /go/bin/weber-insight /usr/bin/
+COPY --from=build-golang /go/src/app/views /app/views
 EXPOSE 8080
 CMD ["weber-insight"]
-
-
