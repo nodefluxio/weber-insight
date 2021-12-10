@@ -4,7 +4,7 @@
   <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>Create New Service</h1>
+            <h1>{{ if .data }} Update {{ else }} Create New {{ end }} Service</h1>
           </div>
 
           <div class="section-body">
@@ -24,6 +24,7 @@
                                     <option value="solution" {{ if .data }} {{ if eq .data.Type "solution" }} selected {{ end }} {{ end }}>Solution</option>
                                     <option value="analytic" {{ if .data }} {{ if eq .data.Type "analytic" }} selected {{ end }} {{ end }}>Analytics</option>
                                     <option value="innovation" {{ if .data }} {{ if eq .data.Type "innovation" }} selected {{ end }} {{ end }}>New Innovation</option>
+                                    <option value="solution-partner" {{ if .data }} {{ if eq .data.Type "solution-partner" }} selected {{ end }} {{ end }}>Solution Partner</option>
                                   </select>
                                 </div>
                                 <div class="form-group">
@@ -36,15 +37,15 @@
                                 </div>
                                 <div class="form-group">
                                   <label>Access Key</label>
-                                  <input type="text" class="form-control" id="access_key" name="access_key" {{ if .data.AccessKey }} value="{{ .data.AccessKey }}" {{ end }} required>
+                                  <input type="text" class="form-control" id="access_key" name="access_key" {{ if .data.AccessKey }} value="{{ .data.AccessKey }}" {{ end }}>
                                 </div>
                                 <div class="form-group">
                                   <label>Token</label>
-                                  <input type="text" class="form-control" id="token" name="token" {{ if .data.Token }} value="{{ .data.Token }}" {{ end }} required>
+                                  <input type="text" class="form-control" id="token" name="token" {{ if .data.Token }} value="{{ .data.Token }}" {{ end }}>
                                 </div>
                                 <div class="form-group">
                                   <label>Timestamp</label>
-                                  <input type="text" class="form-control" id="timestamp" name="timestamp" {{ if .data.Timestamp }} value="{{ .data.Timestamp }}" {{ end }} required>
+                                  <input type="text" class="form-control" id="timestamp" name="timestamp" {{ if .data.Timestamp }} value="{{ .data.Timestamp }}" {{ end }}>
                                 </div>
                                 <div class="form-group">
                                   <label>Short Description</label>
@@ -52,11 +53,11 @@
                                 </div>
                                 <div class="form-group">
                                   <label>Long Description</label>
-                                  <textarea class="form-control" rows="3" id="long_description" name="long_description" required>{{ if .data.LongDescription }} {{ .data.LongDescription }} {{ end }}</textarea>
+                                  <textarea class="form-control" rows="3" id="long_description" name="long_description">{{ if .data.LongDescription }} {{ .data.LongDescription }} {{ end }}</textarea>
                                 </div>
                                 <div class="form-group">
                                   <label>Special Instruction</label>
-                                  <input type="text" class="form-control" id="special_instruction" name="special_instruction" {{ if .data.SpecialInstruction }} value="{{ .data.SpecialInstruction }}" {{ end }} required>
+                                  <input type="text" class="form-control" id="special_instruction" name="special_instruction" {{ if .data.SpecialInstruction }} value="{{ .data.SpecialInstruction }}" {{ end }}>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
