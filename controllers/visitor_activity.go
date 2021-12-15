@@ -10,7 +10,7 @@ import (
 )
 
 func (ctrl *Controller) GetVisitorActivities(ctx *gin.Context) {
-	var visitorActivities []models.VisitorActivity
+	var visitorActivities []models.VisitorActivities
 	err := ctrl.Model.GetVisitorActivities(&visitorActivities)
 	if err != nil {
 		ctx.Redirect(http.StatusTemporaryRedirect, "/error")
