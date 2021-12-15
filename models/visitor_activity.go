@@ -14,10 +14,34 @@ type VisitorActivity struct {
 	CreatedAt    time.Time
 }
 
-func (m *Model) GetVisitorActivities(VisitorActivity *[]VisitorActivity) (err error) {
-	err = m.DBConn.Find(VisitorActivity).Error
+type VisitorActivities struct {
+	Email			string
+	FullName		string
+	Company			string
+	JobTitle		string
+	Industry		string
+	Name			string
+	Type			string
+	Completeness 	int
+	CreatedAt		time.Time
+}
+
+
+
+// if err := db.Table("employee").Select("department.id, employee.department_id, employeeContact.employee_id").Joins("JOIN department on department.id = employee.department_id").Joins("JOIN employeeContact on employeeContact.id = employee.id").Find(&results).Error; err != nil {
+//     return err, ""
+// }
+
+func (m *Model) GetVisitorActivities(VisitorActivities *[]VisitorActivities) (err error) {
+	err = m.DBConn.Table("visitors AS v").
+	Select("va.created_at, v.email, v.full_name, v.company, v.job_title, v.industry, s.name, s.type, va.completeness").
+	Joins("JOIN visitor_activities va ON va.session_id = v.session_id").
+	Joins("JOIN services s ON s.id = va.service_id").
+	Find(VisitorActivities).Error
+
 	if err != nil {
 		return err
 	}
+	
 	return nil
 }
