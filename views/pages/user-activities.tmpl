@@ -88,21 +88,7 @@
       [0, "desc"]
     ]
   });
-
-  function deleteService(id) {
-    if (confirm("Are you sure to delete this item?")) {
-      $.get(
-        "{{ .base_url }}" + "/delete-service/" + id,
-        function (data, status) {
-          console.log("Data: " + data + "\nStatus: " + status);
-          window.location.reload();
-        }
-      );
-    } else {
-      return false
-    }
-  }
 </script>
-</body>
 
+</body>
 </html>
