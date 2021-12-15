@@ -13,3 +13,11 @@ type VisitorActivity struct {
 	Completeness int     `json:"completeness"`
 	CreatedAt    time.Time
 }
+
+func (m *Model) GetVisitorActivities(VisitorActivity *[]VisitorActivity) (err error) {
+	err = m.DBConn.Find(VisitorActivity).Error
+	if err != nil {
+		return err
+	}
+	return nil
+}
