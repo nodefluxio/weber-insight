@@ -66,6 +66,11 @@
                   ><i class="fas fa-user"></i> <span>User List</span></a
                 >
               </li>
+              <li class="{{if .useractivities}}active{{end}}">
+                <a class="nav-link" href="{{ .base_url }}/user-activities"
+                  ><i class="fas fa-history"></i> <span>User Activities</span></a
+                >
+              </li>
               <li class="{{if .userfeedback}}active{{end}}">
                 <a class="nav-link" href="{{ .base_url }}/user-feedback"
                   ><i class="fas fa-comments"></i> <span>User Feedback</span></a
