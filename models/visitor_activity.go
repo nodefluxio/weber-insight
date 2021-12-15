@@ -26,12 +26,6 @@ type VisitorActivities struct {
 	CreatedAt		time.Time
 }
 
-
-
-// if err := db.Table("employee").Select("department.id, employee.department_id, employeeContact.employee_id").Joins("JOIN department on department.id = employee.department_id").Joins("JOIN employeeContact on employeeContact.id = employee.id").Find(&results).Error; err != nil {
-//     return err, ""
-// }
-
 func (m *Model) GetVisitorActivities(VisitorActivities *[]VisitorActivities) (err error) {
 	err = m.DBConn.Table("visitors AS v").
 	Select("va.created_at, v.email, v.full_name, v.company, v.job_title, v.industry, s.name, s.type, va.completeness").
