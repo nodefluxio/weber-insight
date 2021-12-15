@@ -29,6 +29,7 @@
                   <th class="text-center">Full Name</th>
                   <th class="text-center">Company</th>
                   <th class="text-center">Job Title</th>
+                  <th class="text-center">Industry</th>
                   <th class="text-center">Service Name</th>
                   <th class="text-center">Service Type</th>
                   <th class="text-center">Completeness</th>
@@ -38,12 +39,13 @@
                 {{ range .data }}
                 <tr>
                   <td>{{ printf "%.19s" .CreatedAt }} WIB</td>
-                  <td>{{ .SessionID }}</td>
-                  <td>{{ .SessionID }}</td>
-                  <td>{{ .SessionID }}</td>
-                  <td>{{ .SessionID }}</td>
-                  <td>{{ .ServiceID }}</td>
-                  <td>{{ .ServiceID }}</td>
+                  <td>{{ .Email }}</td>
+                  <td>{{ .FullName }}</td>
+                  <td>{{ .Company }}</td>
+                  <td>{{ .JobTitle }}</td>
+                  <td>{{ .Industry }}</td>
+                  <td>{{ .Name }}</td>
+                  <td>{{ .Type }}</td>
                   <td>{{ .Completeness }}</td>
                 </tr>
                 {{ end }}
