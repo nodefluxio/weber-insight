@@ -46,7 +46,15 @@
                   <td>{{ .Industry }}</td>
                   <td>{{ .Name }}</td>
                   <td>{{ .Type }}</td>
-                  <td>{{ .Completeness }}</td>
+                  <td>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" data-width="{{ .Completeness }}%"
+                        aria-valuenow="{{ .Completeness }}" aria-valuemin="0" aria-valuemax="100">
+                        {{ .Completeness }}%
+                      </div>
+                    </div>
+                  </td>
+                  <!-- <td>{{ .Completeness }}</td> -->
                 </tr>
                 {{ end }}
               </tbody>
