@@ -44,8 +44,10 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	// User List
 	r.GET("/user-list", ctrl.GetVisitors)
-	r.GET("/user-activities", ctrl.GetVisitorActivities)
 	r.GET("/aml-pep-user-list", ctrl.GetAMLPEPVisitors)
+
+	// User Activities
+	r.GET("/user-activities", ctrl.GetVisitorActivities)
 
 	// User Feedback
 	r.GET("/user-feedback", ctrl.GetFeedback)
