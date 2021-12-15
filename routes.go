@@ -44,6 +44,7 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	// User List
 	r.GET("/user-list", ctrl.GetVisitors)
+	r.GET("/user-activities", ctrl.GetVisitorActivities)
 	r.GET("/aml-pep-user-list", ctrl.GetAMLPEPVisitors)
 
 	// User Feedback
@@ -85,13 +86,6 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 			"exportdata": true,
 		})
 	})
-	r.GET("/user-activities", func(c *gin.Context) {
-		session := sessions.Default(c)
-		c.HTML(http.StatusOK, "user-activities.tmpl", gin.H{
-			"name":       session.Get("name"),
-			"title":      "Weber Insight - User Activities",
-			"userlookup": true,
-		})
-	})
+
 	return r
 }
