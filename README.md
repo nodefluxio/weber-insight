@@ -8,7 +8,7 @@ Weber Dashboard Management and Insight
 
 ### Prerequisites
 
-- Go
+- Golang
 - Yarn
 - Postgre with database filled from https://github.com/nodefluxio/weber
 
