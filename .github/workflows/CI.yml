@@ -37,5 +37,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: nodefluxio/weber-insight:latest
+          tags: latest
           labels: ${{ steps.meta.outputs.labels }}
