@@ -28,6 +28,7 @@
                   <th class="text-center">Email</th>
                   <th class="text-center">Full Name</th>
                   <th class="text-center">Company</th>
+                  <th class="text-center">Company Size</th>
                   <th class="text-center">Job Title</th>
                   <th class="text-center">Industry</th>
                   <th class="text-center">Service Name</th>
@@ -42,6 +43,7 @@
                   <td>{{ .Email }}</td>
                   <td>{{ .FullName }}</td>
                   <td>{{ .Company }}</td>
+                  <td>{{ .CompanySize }}</td>
                   <td>{{ .JobTitle }}</td>
                   <td>{{ .Industry }}</td>
                   <td>{{ .Name }}</td>
@@ -118,7 +120,7 @@ jQuery.fn.dataTable.render.percentBar = function(pShape, cText, cBorder, cBar, c
       [0, "desc"]
     ],
     "columnDefs": [{
-      targets: 8,
+      targets: 9,
       render:
         $.fn.dataTable.render.percentBar('round','#FFFFFF', '#6777ef', '#6777ef', '#b8bfef', 0, 'groove')
     }]
