@@ -18,7 +18,7 @@ spec:
         - name: nodeflux-registry
       containers:
         - name: weber-insight
-          image: registry.gitlab.com/nodefluxio/demo-apps/weber/insight:latest
+          image: ghcr.io/nodefluxio/weber-insight:latest
           imagePullPolicy: Always
           env:
             - name: APP_HOST
