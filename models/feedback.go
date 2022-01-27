@@ -23,7 +23,7 @@ type FeedbackResultView struct {
 }
 
 func (m *Model) GetAllFeedback(Feedback *[]Feedback) (err error) {
-	err = m.DBConn.Find(Feedback).Error
+	err = m.DBConn.Order("created_at desc").Find(Feedback).Error
 	if err != nil {
 		return err
 	}

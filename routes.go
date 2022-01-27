@@ -53,6 +53,7 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	// User Feedback
 	r.GET("/user-feedback", ctrl.GetFeedback)
+	r.GET("/user-feedback-export", ctrl.ExportFeedback)
 
 	// Others
 	r.GET("/", ctrl.Index)
