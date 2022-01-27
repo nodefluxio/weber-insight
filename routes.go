@@ -48,6 +48,7 @@ func setupRouter(ctrl *controllers.Controller) *gin.Engine {
 
 	// User Activities
 	r.GET("/user-activities", ctrl.GetVisitorActivities)
+	r.GET("/user-activities-export", ctrl.ExportUserActivities)
 
 	// User Feedback
 	r.GET("/user-feedback", ctrl.GetFeedback)
