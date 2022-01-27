@@ -6,19 +6,19 @@ import (
 )
 
 type Visitor struct {
-	SessionID 	string    `gorm:"primary_key" json:"session_id"`
-	Email     	string    `json:"email" validate:"required,email"`
-	FullName  	string    `json:"full_name" validate:"required,min=2,max=255"`
-	Company   	string    `json:"company" validate:"required,min=2,max=255"`
-	JobTitle  	string    `json:"job_title" validate:"required,min=2,max=255"`
-	Industry  	string    `json:"industry" validate:"required,min=2,max=255"`
+	SessionID   string    `gorm:"primary_key" json:"session_id"`
+	Email       string    `json:"email" validate:"required,email"`
+	FullName    string    `json:"full_name" validate:"required,min=2,max=255"`
+	Company     string    `json:"company" validate:"required,min=2,max=255"`
+	JobTitle    string    `json:"job_title" validate:"required,min=2,max=255"`
+	Industry    string    `json:"industry" validate:"required,min=2,max=255"`
 	CompanySize string    `json:"company_size" validate:"required,min=2,max=255"`
-	CreatedAt 	time.Time `json:"created_at"`
-	UpdatedAt 	time.Time `json:"updated_at"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
 }
 
 func (m *Model) GetVisitors(Visitor *[]Visitor) (err error) {
-	err = m.DBConn.Find(Visitor).Error
+	err = m.DBConn.Order("created_at desc").Find(Visitor).Error
 	if err != nil {
 		return err
 	}

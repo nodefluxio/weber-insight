@@ -41,9 +41,11 @@ func (ctrl *Controller) ExportUserActivities(ctx *gin.Context) {
 	csvContent, err := gocsv.MarshalString(visitorActivities)
 	if err != nil {
 		fmt.Println(err)
+		ctx.Redirect(http.StatusTemporaryRedirect, "/error")
+		return
 	}
 
-	ctx.Header("Content-Type", "text/csv") // setting the content type header to text/csv
+	ctx.Header("Content-Type", "text/csv")
 	ctx.Header("Content-Disposition", "attachment;filename=user-activities.csv")
 	ctx.Data(http.StatusOK, "text/csv", []byte(fmt.Sprintf("%v", csvContent)))
 }
